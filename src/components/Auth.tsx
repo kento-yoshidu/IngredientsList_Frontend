@@ -4,6 +4,8 @@ import { useMutateAuth } from '../hooks/useMutateAuth'
 
 import Layout from './Layout'
 
+import styles from "../styles/form.module.css"
+
 export const Auth = () => {
   const [username, setusername] = useState('')
   const [pw, setPw] = useState('')
@@ -34,43 +36,48 @@ export const Auth = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center flex-col text-gray-600 font-mono">
-        <h2 className="my-6">{isLogin ? 'Login' : 'Create a new account'}</h2>
-
+      <div className="flex justify-center items-center flex-col text-gray-600">
         <form onSubmit={submitAuthHandler}>
-          <div>
+          <h2 className={styles.formTitle}>{isLogin ? 'ログイン' : "ユーザー登録"}</h2>
+
+          <div className={styles.wrapper}>
+            <label htmlFor="username">ユーザーID</label><br />
             <input
-              className="mb-3 px-3 text-sm py-2 border border-gray-300"
+              id="username"
+              // className="mb-3 px-3 text-sm py-2 border border-gray-300"
+              className={styles.input}
               name="username"
               type="text"
               autoFocus
-              placeholder="username address"
+              placeholder="username"
               onChange={(e) => setusername(e.target.value)}
               value={username}
             />
           </div>
 
-          <div>
+          <div className={styles.wrapper}>
+            <label htmlFor="password">パスワード</label><br />
             <input
-              className="mb-3 px-3 text-sm py-2 border border-gray-300"
+              id="password"
+              // className="mb-3 px-3 text-sm py-2 border border-gray-300"
+              className={styles.input}
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder="password"
               onChange={(e) => setPw(e.target.value)}
               value={pw}
             />
           </div>
-          <div className="flex justify-center my-2">
-            <button
-              className="disabled:opacity-40 py-2 px-4 rounded text-white bg-indigo-600"
-              disabled={!username || !pw}
-              type="submit"
-            >
-              {isLogin ? 'Login' : 'Sign Up'}
-            </button>
-          </div>
-        </form>
 
+          <button
+            // className="disabled:opacity-40 py-2 px-4 rounded text-white bg-indigo-600"
+            className={styles.button}
+            disabled={!username || !pw}
+            type="submit"
+          >
+            {isLogin ? 'ログイン' : '登録'}
+          </button>
+        </form>
         <ArrowPathIcon
           onClick={() => setIsLogin(!isLogin)}
           className="h-6 w-6 my-2 text-blue-500 cursor-pointer"
