@@ -6,6 +6,8 @@ import { Ingredients } from './components/Ingredients'
 import axios from 'axios'
 import { CsrfToken } from './types'
 
+import "./styles/global.css"
+
 function App() {
   useEffect(() => {
     axios.defaults.withCredentials = true
@@ -17,6 +19,7 @@ function App() {
     }
     getCsrfToken()
   }, [])
+
   return (
     <BrowserRouter>
       <Routes>

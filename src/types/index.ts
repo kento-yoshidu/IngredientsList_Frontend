@@ -17,6 +17,7 @@ export type IngredientItem = {
   shouldbuy: boolean
   dishname: string
 }
+
 export type CsrfToken = {
   csrf_token: string
 }

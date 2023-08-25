@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    "Segoe UI",
+    "Helvetica Neue",
+    HelveticaNeue,
+    YuGothic,
+    "Yu Gothic Medium",
+    "Yu Gothic",
+    Verdana,
+    Meiryo,
+    sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #444;
+}
+
+:root {
+  --max-width: 635px;
+  --border-color: #aaa;
+  --invalid-color: rgb(220, 50, 50);
+  --clickable-height: 58px;
+}
