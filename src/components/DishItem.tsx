@@ -13,27 +13,30 @@ const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
   const { deleteDishMutation } = useMutateDish()
 
   return (
-    <li className="my-3">
+    <li style={{ margin: "30px auto", border: "1px solid #444" }}>
       <Link to={`/dish/${id}/ingredients`}>
         <span className="font-bold">★ {dishname}</span>
       </Link>
 
-      <div className="flex float-right ml-20">
-        <PencilIcon
-          className="h-5 w-5 mx-1 text-blue-500 cursor-pointer"
+      <div>
+        <button
           onClick={() => {
             updateDish({
               id: id,
               dishname: dishname,
             })
           }}
-        />
-        <TrashIcon
-          className="h-5 w-5 text-blue-500 cursor-pointer"
+        >
+          修正する
+        </button>
+
+        <button
           onClick={() => {
             deleteDishMutation.mutate(id)
           }}
-        />
+        >
+          削除する
+        </button>
       </div>
     </li>
   )
