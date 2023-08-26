@@ -1,10 +1,12 @@
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { Dish } from '../types'
-import { useError } from './useError'
+import useError from './useError'
 
-export const useQueryDishes = () => {
+import { Dish } from '../types'
+
+const useQueryDishes = () => {
   const { switchErrorHandling } = useError()
+
   const getDishs = async () => {
     const { data } = await axios.get<Dish[]>(
       `${process.env.REACT_APP_API_URL}/dishes`,
@@ -26,3 +28,5 @@ export const useQueryDishes = () => {
     },
   })
 }
+
+export default useQueryDishes

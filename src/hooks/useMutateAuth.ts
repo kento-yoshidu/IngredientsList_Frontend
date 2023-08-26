@@ -2,13 +2,15 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import useStore from '../store'
-import { Credential } from '../types'
-import { useError } from '../hooks/useError'
+import useError from '../hooks/useError'
 
-export const useMutateAuth = () => {
+import { Credential } from '../types'
+
+const useMutateAuth = () => {
   const navigate = useNavigate()
   const resetEditedDish = useStore((state) => state.resetEditedDish)
   const { switchErrorHandling } = useError()
+
   const loginMutation = useMutation(
     async (user: Credential) =>
       await axios.post(`${process.env.REACT_APP_API_URL}/login`, user),
@@ -25,6 +27,7 @@ export const useMutateAuth = () => {
       },
     }
   )
+
   const registerMutation = useMutation(
     async (user: Credential) =>
       await axios.post(`${process.env.REACT_APP_API_URL}/signup`, user),
@@ -38,6 +41,7 @@ export const useMutateAuth = () => {
       },
     }
   )
+
   const logoutMutation = useMutation(
     async () => await axios.post(`${process.env.REACT_APP_API_URL}/logout`),
     {
@@ -54,5 +58,8 @@ export const useMutateAuth = () => {
       },
     }
   )
+
   return { loginMutation, registerMutation, logoutMutation }
 }
+
+export default useMutateAuth

@@ -1,9 +1,10 @@
 import { FC, memo } from 'react'
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid'
-import useStore from '../store'
-import { Dish } from '../types'
-import { useMutateDish } from '../hooks/useMutateDish'
 import { Link } from 'react-router-dom'
+
+import useStore from '../store'
+import useMutateDish from '../hooks/useMutateDish'
+
+import { Dish } from '../types'
 
 const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
   id,
