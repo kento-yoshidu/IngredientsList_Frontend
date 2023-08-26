@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import useStore from '../store'
 import useMutateDish from '../hooks/useMutateDish'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+
 import { Dish } from '../types'
 
 import listStyle from "../styles/list.module.css"
@@ -16,31 +19,29 @@ const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
   const { deleteDishMutation } = useMutateDish()
 
   return (
-    <li className={listStyle.list}>
+    <li className={listStyle.listItem}>
       <Link to={`/dish/${id}/ingredients`}>
-        <span className="font-bold">★ {dishname}</span>
+        <span className="font-bold">{dishname}</span>
       </Link>
 
-      <div>
-        <button
-          onClick={() => {
-            updateDish({
-              id: id,
-              dishname: dishname,
-            })
-          }}
-        >
-          修正する
-        </button>
+      <button
+        onClick={() => {
+          updateDish({
+            id: id,
+            dishname: dishname,
+          })
+        }}
+      >
+        <FontAwesomeIcon icon={faPencil} />
+      </button>
 
-        <button
-          onClick={() => {
-            deleteDishMutation.mutate(id)
-          }}
-        >
-          削除する
-        </button>
-      </div>
+      <FontAwesomeIcon
+        role="button"
+        icon={faTrash}
+        onClick={() => {
+          deleteDishMutation.mutate(id)
+        }}
+      />
     </li>
   )
 }
