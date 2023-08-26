@@ -30,6 +30,7 @@ const useMutateDish = () => {
       },
     }
   )
+
   const updateDishMutation = useMutation(
     (dish: Omit<Dish, 'created_at' | 'updated_at'>) =>
       axios.put<Dish>(`${process.env.REACT_APP_API_URL}/dish/${dish.id}`, {
@@ -57,6 +58,7 @@ const useMutateDish = () => {
       },
     }
   )
+
   const deleteDishMutation = useMutation(
     (id: number) =>
       axios.delete(`${process.env.REACT_APP_API_URL}/dish/${id}`),

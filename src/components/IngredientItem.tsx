@@ -1,6 +1,8 @@
 import { memo, useState } from 'react'
 import { Ingredient } from '../types'
 
+import useStore from '../store'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-regular-svg-icons'
@@ -18,33 +20,39 @@ const IngredientItemMemo = ({
     setIsShouldBy(!isShouldBy)
   }
 
+  const updateIngre = useStore((state) => state.updateEditedIngre)
+
   return (
     <li
+      key={id}
       className={listStyle.listItem}
-      onClick={clickHandle}
     >
+      <div onClick={clickHandle}>
         <span className="font-bold">{ingredientname}</span>
-      {/*
-      <label htmlFor={`item-${id}`}>
-      </label>
 
-      <input
-        id={`item-${id}`}
-        style={{ display: "none" }}
-        type="checkbox"
-        checked={isShouldBy}
-      />
-  */}
-
-      {isShouldBy ? (
-        <span className={listStyle.stockNone}>
-          ストックなし <FontAwesomeIcon icon={faSquare} className={listStyle.icon} />
-        </span>
-      ) : (
-        <span className={listStyle.stockOk}>
-          ストックあり <FontAwesomeIcon icon={faSquareCheck} className={listStyle.icon}/>
+        {isShouldBy ? (
+          <span className={listStyle.stockNone}>
+            ストックなし <FontAwesomeIcon icon={faSquare} className={listStyle.icon} />
           </span>
-      )}
+        ) : (
+          <span className={listStyle.stockOk}>
+            ストックあり <FontAwesomeIcon icon={faSquareCheck} className={listStyle.icon}/>
+            </span>
+        )}
+      </div>
+
+      <button
+        onClick={() => {
+          updateIngre({
+            id: id,
+            ingredientname: ingredientname,
+            shouldbuy: shouldbuy
+          })
+        }}
+      >
+        修正
+      </button>
+
     </li>
   )
 }
