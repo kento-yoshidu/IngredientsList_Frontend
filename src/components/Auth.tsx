@@ -37,7 +37,7 @@ const Auth = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center flex-col text-gray-600">
+      <div>
         <form onSubmit={submitAuthHandler}>
           <h2 className={styles.formTitle}>{isLogin ? 'ログイン' : "ユーザー登録"}</h2>
 

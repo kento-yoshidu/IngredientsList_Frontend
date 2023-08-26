@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom"
 import useQueryIngredients from "../hooks/useQueryIngredients"
-import { IngreItem } from "./IngreItem"
+import { IngreItem } from "./IngredientItem"
 
 import Layout from "./Layout"
+
+import listStyle from "../styles/list.module.css"
 
 const IngredientList = () => {
   const { id } = useParams()
@@ -29,7 +31,7 @@ const IngredientList = () => {
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-            <ul>
+            <ul className={listStyle.list}>
               {data?.map((ing) => (
                 <IngreItem
                   id={ing.id}

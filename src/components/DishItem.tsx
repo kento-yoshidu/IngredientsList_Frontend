@@ -6,6 +6,8 @@ import useMutateDish from '../hooks/useMutateDish'
 
 import { Dish } from '../types'
 
+import listStyle from "../styles/list.module.css"
+
 const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
   id,
   dishname,
@@ -14,7 +16,7 @@ const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
   const { deleteDishMutation } = useMutateDish()
 
   return (
-    <li style={{ margin: "30px auto", border: "1px solid #444" }}>
+    <li className={listStyle.list}>
       <Link to={`/dish/${id}/ingredients`}>
         <span className="font-bold">★ {dishname}</span>
       </Link>

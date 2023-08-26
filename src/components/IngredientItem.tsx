@@ -1,7 +1,9 @@
 import { memo, useState } from 'react'
 import { Ingredient } from '../types'
 
-const IngreItemMemo = ({
+import listStyle from "../styles/list.module.css"
+
+const IngredientItemMemo = ({
   id,
   ingredientname,
   shouldbuy
@@ -13,10 +15,13 @@ const IngreItemMemo = ({
   }
 
   return (
-    <li className="my-3" key={id}>
-      <span className="font-bold">{ingredientname}</span>
+    <li className={listStyle.listItem}>
+      <label htmlFor={`item-${id}`}>
+        <span className="font-bold">{ingredientname}</span>
+      </label>
 
       <input
+        id={`item-${id}`}
         type="checkbox"
         checked={isShouldBy}
         onClick={clickHandle}
@@ -25,4 +30,4 @@ const IngreItemMemo = ({
   )
 }
 
-export const IngreItem = memo(IngreItemMemo)
+export const IngreItem = memo(IngredientItemMemo)
