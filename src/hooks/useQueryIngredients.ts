@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { IngredientItem } from '../types'
-import { useError } from './useError'
+import useError from './useError'
 
-export const useQueryIngredients = (dishId: number) => {
+import { IngredientItem } from '../types'
+
+const useQueryIngredients = (dishId: number) => {
   const { switchErrorHandling } = useError()
 
   const getIngredients = async () => {
@@ -17,7 +18,7 @@ export const useQueryIngredients = (dishId: number) => {
   return useQuery<IngredientItem[], Error>({
     queryKey: ['ingredients'],
     queryFn: getIngredients,
-    staleTime: 1000,
+    staleTime: 0,
     onError: (err: any) => {
       if (err.response.data.message) {
         switchErrorHandling(err.response.data.message)
@@ -27,3 +28,5 @@ export const useQueryIngredients = (dishId: number) => {
     },
   })
 }
+
+export default useQueryIngredients

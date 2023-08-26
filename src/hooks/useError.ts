@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { CsrfToken } from '../types'
 import useStore from '../store'
 
-export const useError = () => {
+const useError = () => {
   const navigate = useNavigate()
   const resetEditedDish = useStore((state) => state.resetEditedDish)
+
   const getCsrfToken = async () => {
     const { data } = await axios.get<CsrfToken>(
       `${process.env.REACT_APP_API_URL}/csrf`
     )
+
     axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrf_token
   }
 
@@ -42,5 +44,8 @@ export const useError = () => {
         alert(msg)
     }
   }
+
   return { switchErrorHandling }
 }
+
+export default useError

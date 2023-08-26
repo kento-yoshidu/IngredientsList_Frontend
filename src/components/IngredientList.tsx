@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
-import { useQueryIngredients } from "../hooks/useQueryIngredients"
+import useQueryIngredients from "../hooks/useQueryIngredients"
 import { IngreItem } from "./IngreItem"
 
 import Layout from "./Layout"
 
-export const Ingredients = () => {
+const IngredientList = () => {
   const { id } = useParams()
 
   const { data, isLoading } = useQueryIngredients(Number(id))
@@ -26,21 +26,23 @@ export const Ingredients = () => {
             </div>
           )}
 
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <ul>
-                {data?.map((ing) => (
-                  <IngreItem
-                    id={ing.id}
-                    ingredientname={ing.ingredientname}
-                    shouldbuy={ing.shouldbuy}
-                  />
-                ))}
-              </ul>
-            )}
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <ul>
+              {data?.map((ing) => (
+                <IngreItem
+                  id={ing.id}
+                  ingredientname={ing.ingredientname}
+                  shouldbuy={ing.shouldbuy}
+                />
+              ))}
+            </ul>
+          )}
         </div>
       )}
     </Layout>
   )
 }
+
+export default IngredientList

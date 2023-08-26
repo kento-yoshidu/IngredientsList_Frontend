@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import { Dish } from '../types'
 import useStore from '../store'
-import { useError } from './useError'
+import useError from './useError'
 
-export const useMutateDish = () => {
+import { Dish } from '../types'
+
+const useMutateDish = () => {
   const queryClient = useQueryClient()
   const { switchErrorHandling } = useError()
   const resetEditedDish = useStore((state) => state.resetEditedDish)
@@ -87,3 +88,5 @@ export const useMutateDish = () => {
     deleteDishMutation,
   }
 }
+
+export default useMutateDish

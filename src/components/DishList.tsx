@@ -1,18 +1,14 @@
 import { FormEvent } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
-import {
-  ArrowRightOnRectangleIcon,
-  ShieldCheckIcon,
-} from '@heroicons/react/24/solid'
 import useStore from '../store'
-import { useQueryDishes } from '../hooks/useQueryDishes'
-import { useMutateDish } from '../hooks/useMutateDish'
-import { useMutateAuth } from '../hooks/useMutateAuth'
+import useQueryDishes from '../hooks/useQueryDishes'
+import useMutateDish from '../hooks/useMutateDish'
+import useMutateAuth from '../hooks/useMutateAuth'
 
 import Layout from './Layout'
 import { DishItem } from './DishItem'
 
-export const Dish = () => {
+const DishList = () => {
   const queryClient = useQueryClient()
   const { editedDish } = useStore()
   const updateDish = useStore((state) => state.updateEditedDish)
@@ -84,3 +80,5 @@ export const Dish = () => {
     </Layout>
   )
 }
+
+export default DishList
