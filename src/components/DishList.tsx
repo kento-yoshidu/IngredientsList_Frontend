@@ -8,6 +8,10 @@ import useMutateAuth from '../hooks/useMutateAuth'
 import Layout from './Layout'
 import { DishItem } from './DishItem'
 
+import Style from "../styles/style.module.css"
+import listStyle from "../styles/list.module.css"
+import formStyle from "../styles/form.module.css"
+
 const DishList = () => {
   const queryClient = useQueryClient()
   const { editedDish } = useStore()
@@ -36,15 +40,34 @@ const DishList = () => {
   return (
     <Layout>
       <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 font-mono">
-        <div className="flex items-center my-3">
-          <span className="text-center text-3xl font-extrabold">
-            食材リスト
-          </span>
-        </div>
-
         <button onClick={logout}>ログアウト</button>
 
-        <form onSubmit={submitDishHandler}>
+        <h2 className={Style.pageTitle}>料理リスト</h2>
+
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {data?.length === 0 ? (
+              <p>料理が登録されていません。</p>
+            ) : (
+              <ul className={listStyle.list}>
+                {data?.map((dish) => (
+                  <DishItem key={dish.id} id={dish.id} dishname={dish.dishname} />
+                ))}
+              </ul>
+            )}
+          </>
+        )}
+
+        <hr />
+
+        <form
+          className={formStyle.form}
+          onSubmit={submitDishHandler}
+        >
+          <h2 className={formStyle.formTitle}>料理を追加する</h2>
+
           <input
             className="mb-3 mr-3 px-3 py-2 border border-gray-300"
             placeholder="dishName ?"
@@ -61,21 +84,6 @@ const DishList = () => {
           </button>
         </form>
 
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            {data?.length === 0 ? (
-              <p>料理が登録されていません。</p>
-            ) : (
-              <ul className="my-5">
-                {data?.map((dish) => (
-                  <DishItem key={dish.id} id={dish.id} dishname={dish.dishname} />
-                ))}
-              </ul>
-            )}
-          </>
-        )}
       </div>
     </Layout>
   )
