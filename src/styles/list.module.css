@@ -1,9 +1,36 @@
 .list {
+  margin: 30px auto;
   list-style: none;
   cursor: pointer;
 }
 
 .listItem {
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto ;
   font-size: 1.25rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.listItem a {
+  color: #444;
+  transition-duration: 0.15s;
+}
+
+.listItem a:hover {
+  color: var(--main-color);
+}
+
+.stockNone,
+.stockOk {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+:is(.stockOk, .stockNone) .icon {
+  margin-left: 10px;
+  color: var(--main-color);
+  font-size: 1.5rem;
 }
