@@ -1,8 +1,10 @@
 import { useState, FormEvent } from 'react'
-import { ArrowPathIcon } from '@heroicons/react/24/solid'
 import useMutateAuth from '../hooks/useMutateAuth'
 
 import Layout from './Layout'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 
 import styles from "../styles/form.module.css"
 
@@ -45,7 +47,6 @@ const Auth = () => {
             <label htmlFor="username">ユーザーID</label><br />
             <input
               id="username"
-              // className="mb-3 px-3 text-sm py-2 border border-gray-300"
               className={styles.input}
               name="username"
               type="text"
@@ -78,7 +79,9 @@ const Auth = () => {
           </button>
         </form>
 
-        <ArrowPathIcon
+        <FontAwesomeIcon
+          style={{ fontSize: "3rem", textAlign: "center" }}
+          icon={faArrowsRotate}
           onClick={() => setIsLogin(!isLogin)}
         />
 

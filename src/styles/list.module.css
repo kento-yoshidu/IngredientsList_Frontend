@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
   margin: 30px auto ;
   font-size: 1.25rem;
   border-bottom: 1px solid #ddd;
@@ -44,6 +45,5 @@
 .itemRight {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  width: 15%;
+  gap: 15px;
 }

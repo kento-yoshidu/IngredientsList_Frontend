@@ -16,16 +16,19 @@ const IngredientItemMemo = ({
   ingredientname,
   shouldbuy
 }: Ingredient) => {
+  const { editedIngre } = useStore()
+  const updateIngre = useStore((state) => state.updateEditedIngre)
+
+  const dishId = useParams()
   const [isShouldBy, setIsShouldBy] = useState(shouldbuy)
 
   const clickHandle = () => {
     setIsShouldBy(!isShouldBy)
+
+    updateIngredientMutation.mutate(editedIngre)
   }
 
-  const updateIngre = useStore((state) => state.updateEditedIngre)
-
-  const dishId = useParams()
-
+  const { updateIngredientMutation } = useMutateIngredient()
   const { deleteIngredientMutation } = useMutateIngredient()
 
   return (
@@ -36,6 +39,7 @@ const IngredientItemMemo = ({
       <div
         className={listStyle.itemLeft}
         onClick={clickHandle}
+        onChange={(e) => updateIngre({ ...editedIngre, id: id, shouldbuy: isShouldBy })}
       >
         <span className="font-bold">{ingredientname}</span>
 

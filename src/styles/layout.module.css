@@ -1,9 +1,10 @@
 .layout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid #ddd;
   height: 100vh;
   gap: 40px;
+  border: 1px solid red;
 }

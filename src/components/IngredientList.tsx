@@ -1,5 +1,4 @@
-import { FormEvent } from 'react'
-import { useQueryClient } from '@tanstack/react-query'
+import { FormEvent, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import useStore from '../store'
 import useQueryIngredients from "../hooks/useQueryIngredients"
@@ -28,6 +27,8 @@ const IngredientList = () => {
       updateIngredientMutation.mutate(editedIngre)
     }
   }
+
+  let dishName = data![0].dishname
 
   return (
     <Layout>
@@ -68,7 +69,7 @@ const IngredientList = () => {
         className={formStyle.form}
         onSubmit={submitDishHandler}
       >
-        <h2 className={formStyle.formTitle}>料理を追加する</h2>
+        <h2 className={formStyle.formTitle}>食材を追加する</h2>
 
         <input
           className="mb-3 mr-3 px-3 py-2 border border-gray-300"
