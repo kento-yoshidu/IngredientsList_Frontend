@@ -9,6 +9,7 @@ type EditedIngre = {
   id: number
   ingredientname: string
   shouldbuy: boolean
+  dishId?: string
 }
 
 type State = {

@@ -22,6 +22,12 @@
   color: var(--main-color);
 }
 
+.itemLeft {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 3;
+}
+
 .stockNone,
 .stockOk {
   font-size: 1rem;
@@ -33,4 +39,11 @@
   margin-left: 10px;
   color: var(--main-color);
   font-size: 1.5rem;
+}
+
+.itemRight {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 15%;
 }
