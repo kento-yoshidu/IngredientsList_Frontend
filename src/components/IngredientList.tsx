@@ -1,4 +1,4 @@
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import useStore from '../store'
 import useQueryIngredients from "../hooks/useQueryIngredients"
@@ -27,6 +27,8 @@ const IngredientList = () => {
       updateIngredientMutation.mutate(editedIngre)
     }
   }
+
+  let dishName = data![0].dishname
 
   return (
     <Layout>

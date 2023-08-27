@@ -13,8 +13,6 @@ const useMutateIngredient = () => {
 
   const dishId = useParams()
 
-  console.log("dishId = ", dishId)
-
   const updateIngredientMutation = useMutation(
     (ingredient: Omit<Ingredient, 'created_at' | 'updated_at'>) =>
       axios.put<Ingredient>(`${process.env.REACT_APP_API_URL}/ingredient/${ingredient.id}`, {
