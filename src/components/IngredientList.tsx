@@ -68,7 +68,7 @@ const IngredientList = () => {
         className={formStyle.form}
         onSubmit={submitDishHandler}
       >
-        <h2 className={formStyle.formTitle}>料理を追加する</h2>
+        <h2 className={formStyle.formTitle}>食材を追加する</h2>
 
         <input
           className="mb-3 mr-3 px-3 py-2 border border-gray-300"

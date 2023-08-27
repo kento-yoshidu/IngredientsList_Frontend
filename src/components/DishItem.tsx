@@ -24,16 +24,14 @@ const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
         <span className="font-bold">{dishname}</span>
       </Link>
 
-      <button
+      <FontAwesomeIcon icon={faPencil}
         onClick={() => {
           updateDish({
             id: id,
             dishname: dishname,
           })
         }}
-      >
-        <FontAwesomeIcon icon={faPencil} />
-      </button>
+      />
 
       <FontAwesomeIcon
         role="button"
