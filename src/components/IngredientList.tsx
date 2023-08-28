@@ -28,8 +28,6 @@ const IngredientList = () => {
     }
   }
 
-  let dishName = data![0].dishname
-
   return (
     <Layout>
       {data?.length === 0 ? (
