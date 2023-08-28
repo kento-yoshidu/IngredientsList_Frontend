@@ -16,7 +16,9 @@ const useMutateIngredient = () => {
   const updateIngredientMutation = useMutation(
     (ingredient: Omit<Ingredient, 'created_at' | 'updated_at'>) =>
       axios.put<Ingredient>(`${process.env.REACT_APP_API_URL}/ingredient/${ingredient.id}`, {
+        id: ingredient.id,
         ingredientname: ingredient.ingredientname,
+        shouldbuy: ingredient.shouldbuy,
         dishId: dishId.id
       }),
     {
@@ -30,7 +32,7 @@ const useMutateIngredient = () => {
             )
           )
         }
-        resetEditedIngredient()
+        // resetEditedIngredient()
       },
       onError: (err: any) => {
         if (err.response.data.message) {

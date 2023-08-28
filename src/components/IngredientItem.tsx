@@ -17,7 +17,7 @@ const IngredientItemMemo = ({
   shouldbuy
 }: Ingredient) => {
   const { editedIngre } = useStore()
-  const updateIngre = useStore((state) => state.updateEditedIngre)
+  // const updateIngre = useStore((state) => state.updateEditedIngre)
 
   const dishId = useParams()
   const [isShouldBy, setIsShouldBy] = useState(shouldbuy)
@@ -25,7 +25,13 @@ const IngredientItemMemo = ({
   const clickHandle = () => {
     setIsShouldBy(!isShouldBy)
 
-    updateIngredientMutation.mutate(editedIngre)
+    const obj = {
+      id,
+      ingredientname,
+      shouldbuy: !isShouldBy
+    }
+
+    updateIngredientMutation.mutate(obj)
   }
 
   const { updateIngredientMutation } = useMutateIngredient()
@@ -39,7 +45,6 @@ const IngredientItemMemo = ({
       <div
         className={listStyle.itemLeft}
         onClick={clickHandle}
-        onChange={(e) => updateIngre({ ...editedIngre, id: id, shouldbuy: isShouldBy })}
       >
         <span className="font-bold">{ingredientname}</span>
 
@@ -57,14 +62,6 @@ const IngredientItemMemo = ({
       <div className={listStyle.itemRight}>
         <FontAwesomeIcon
           icon={faPencil}
-          onClick={() => {
-            updateIngre({
-              id: id,
-              ingredientname: ingredientname,
-              shouldbuy: shouldbuy,
-              dishId: dishId.id
-            })
-          }}
         />
 
         <FontAwesomeIcon

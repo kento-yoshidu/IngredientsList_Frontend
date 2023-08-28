@@ -28,6 +28,8 @@ const IngredientList = () => {
     }
   }
 
+  console.log("data = ", data)
+
   return (
     <Layout>
       {data?.length === 0 ? (
