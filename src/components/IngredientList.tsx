@@ -28,7 +28,7 @@ const IngredientList = () => {
     }
   }
 
-  let dishName = data![0].dishname
+  console.log("data = ", data)
 
   return (
     <Layout>
