@@ -1,25 +1,18 @@
 import { memo, useState } from 'react'
 import { Ingredient } from '../types'
 
-import useStore from '../store'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquareCheck, faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-regular-svg-icons'
 import useMutateIngredient from "../hooks/useMutateIngre"
 
 import listStyle from "../styles/list.module.css"
-import { useParams } from 'react-router-dom'
 
 const IngredientItemMemo = ({
   id,
   ingredientname,
   shouldbuy
 }: Ingredient) => {
-  const { editedIngre } = useStore()
-  // const updateIngre = useStore((state) => state.updateEditedIngre)
-
-  const dishId = useParams()
   const [isShouldBy, setIsShouldBy] = useState(shouldbuy)
 
   const clickHandle = () => {

@@ -39,6 +39,7 @@ const useMutateDish = () => {
     {
       onSuccess: (res, variables) => {
         const previousDishs = queryClient.getQueryData<Dish[]>(['dishes'])
+
         if (previousDishs) {
           queryClient.setQueryData<Dish[]>(
             ['dishes'],
