@@ -16,13 +16,15 @@ const IngredientList = () => {
 
   const { id } = useParams()
   const { data, isLoading } = useQueryIngredients(Number(id))
-  const { updateIngredientMutation } = useMutateIngredient()
+  const { createIngredientMutation, updateIngredientMutation } = useMutateIngredient()
 
   const submitDishHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (editedIngre.id === 0)
-      window.alert("CreateIngredient : 後で実装")
+      createIngredientMutation.mutate({
+        ingredientname: editedIngre.ingredientname
+      })
     else {
       updateIngredientMutation.mutate(editedIngre)
     }
@@ -70,6 +72,7 @@ const IngredientList = () => {
         <h2 className={formStyle.formTitle}>食材を追加する</h2>
 
         <input
+          name="ingredientname"
           className="mb-3 mr-3 px-3 py-2 border border-gray-300"
           placeholder="dishName ?"
           type="text"
