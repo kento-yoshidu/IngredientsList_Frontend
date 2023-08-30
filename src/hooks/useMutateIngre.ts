@@ -13,6 +13,28 @@ const useMutateIngredient = () => {
 
   const dishId = useParams()
 
+  const createIngredientMutation = useMutation(
+    (ingredient: Omit<Ingredient, "id" | "created_at" | "updated_at" | "shouldbuy">) =>
+      axios.post<Ingredient>(`${process.env.REACT_APP_API_URL}/dish/${dishId.id}/ingredients`, ingredient
+    ),
+    {
+      onSuccess: (res) => {
+        const previousIngredients = queryClient.getQueryData<Ingredient[]>(["ingredients"])
+        if (previousIngredients) {
+          queryClient.setQueryData(["ingredients"], [...previousIngredients, res.data])
+        }
+        resetEditedIngredient()
+      },
+      onError: (err: any) => {
+        if (err.response.data.message) {
+          switchErrorHandling(err.response.data.message)
+        } else {
+          switchErrorHandling(err.response.data)
+        }
+      },
+    }
+  )
+
   const updateIngredientMutation = useMutation(
     (ingredient: Omit<Ingredient, 'created_at' | 'updated_at'>) =>
       axios.put<Ingredient>(`${process.env.REACT_APP_API_URL}/ingredient/${ingredient.id}`, {
@@ -70,6 +92,7 @@ const useMutateIngredient = () => {
   )
 
   return {
+    createIngredientMutation,
     updateIngredientMutation,
     deleteIngredientMutation
   }
