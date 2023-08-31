@@ -1,3 +1,4 @@
 .headerTitle {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: normal;
 }

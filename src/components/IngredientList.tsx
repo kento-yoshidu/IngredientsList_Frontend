@@ -7,6 +7,7 @@ import useMutateIngredient from '../hooks/useMutateIngre'
 
 import Layout from "./Layout"
 
+import styles from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"
 import formStyle from "../styles/form.module.css"
 
@@ -37,14 +38,13 @@ const IngredientList = () => {
       ) : (
         <>
           {!isLoading && (
-            <div className="flex items-center my-3">
+            <>
               {data![0].dishname && (
-                <p style={{ fontSize: "1.5rem" }}>
-                  ✨<span style={{ fontWeight: "bold" }}>{data![0].dishname}</span>✨
-                  の食材リスト
+                <p className={styles.pageTitle}>
+                  ✨{data![0].dishname}✨ の食材リスト
                 </p>
               )}
-            </div>
+            </>
           )}
 
           {isLoading ? (
@@ -84,7 +84,7 @@ const IngredientList = () => {
           className="disabled:opacity-40 mx-3 py-2 px-3 text-white bg-indigo-600 rounded"
           disabled={!editedIngre.ingredientname}
         >
-          {editedIngre.id === 0 ? 'Create' : 'Update'}
+          追加する
         </button>
       </form>
     </Layout>
