@@ -2,7 +2,7 @@ import { memo, useState } from 'react'
 import { Ingredient } from '../types'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCheck, faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faSquareCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-regular-svg-icons'
 import useMutateIngredient from "../hooks/useMutateIngre"
 
@@ -53,10 +53,6 @@ const IngredientItemMemo = ({
       </div>
 
       <div className={listStyle.itemRight}>
-        <FontAwesomeIcon
-          icon={faPencil}
-        />
-
         <FontAwesomeIcon
           icon={faTrash}
           onClick={() => {
