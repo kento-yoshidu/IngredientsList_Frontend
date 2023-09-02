@@ -54,7 +54,7 @@ const useMutateIngredient = () => {
             )
           )
         }
-        // resetEditedIngredient()
+        resetEditedIngredient()
       },
       onError: (err: any) => {
         if (err.response.data.message) {
