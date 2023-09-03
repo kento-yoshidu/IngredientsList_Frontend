@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom"
 
+import Logout from "./Logout"
+
 import styles from "../styles/header.module.css"
 
 const Header = () => {
@@ -12,7 +14,7 @@ const Header = () => {
       <p className={styles.notice}>Version 0.1.0</p>
 
       {path.pathname !== "/" && (
-        <p>ログアウト</p>
+        <Logout />
       )}
     </header>
   )

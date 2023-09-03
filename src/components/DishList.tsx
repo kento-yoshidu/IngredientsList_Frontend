@@ -1,9 +1,7 @@
 import { FormEvent } from 'react'
-import { useQueryClient } from '@tanstack/react-query'
 import useStore from '../store'
 import useQueryDishes from '../hooks/useQueryDishes'
 import useMutateDish from '../hooks/useMutateDish'
-import useMutateAuth from '../hooks/useMutateAuth'
 
 import Layout from './Layout'
 import { DishItem } from './DishItem'
@@ -13,12 +11,11 @@ import listStyle from "../styles/list.module.css"
 import formStyle from "../styles/form.module.css"
 
 const DishList = () => {
-  const queryClient = useQueryClient()
   const { editedDish } = useStore()
   const updateDish = useStore((state) => state.updateEditedDish)
+
   const { data, isLoading } = useQueryDishes()
   const { createDishMutation, updateDishMutation } = useMutateDish()
-  const { logoutMutation } = useMutateAuth()
 
   const submitDishHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -32,16 +29,9 @@ const DishList = () => {
     }
   }
 
-  const logout = async () => {
-    await logoutMutation.mutateAsync()
-    queryClient.removeQueries(['dishes'])
-  }
-
   return (
     <Layout>
       <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 font-mono">
-        <button onClick={logout}>ログアウト</button>
-
         <h2 className={Style.pageTitle}>料理リスト</h2>
 
         {isLoading ? (
