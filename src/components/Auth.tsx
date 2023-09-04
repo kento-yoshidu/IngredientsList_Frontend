@@ -1,67 +1,51 @@
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent } from "react"
 import useMutateAuth from '../hooks/useMutateAuth'
 
-import Layout from './Layout'
+import Layout from "./Layout"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
-
-import styles from "../styles/form.module.css"
+import styles from "../styles/style.module.css"
+import formStyles from "../styles/form.module.css"
+import { Link } from "react-router-dom"
 
 const Auth = () => {
-  const [username, setusername] = useState('')
-  const [pw, setPw] = useState('')
-  const [isLogin, setIsLogin] = useState(true)
-  const { loginMutation, registerMutation } = useMutateAuth()
+  const [username, setUsername] = useState("")
+  const [pw, setPw] = useState("")
+  const { loginMutation } = useMutateAuth()
 
   const submitAuthHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (isLogin) {
-      loginMutation.mutate({
-        username: username,
-        password: pw,
-      })
-    } else {
-      await registerMutation
-        .mutateAsync({
-          username: username,
-          password: pw,
-        })
-        .then(() =>
-          loginMutation.mutate({
-            username: username,
-            password: pw,
-          })
-        )
-    }
+    loginMutation.mutate({
+      username: username,
+      password: pw,
+    })
   }
 
   return (
     <Layout>
       <div>
         <form onSubmit={submitAuthHandler}>
-          <h2 className={styles.formTitle}>{isLogin ? 'ログイン' : "ユーザー登録"}</h2>
+          <h2 className={formStyles.formTitle}>ログイン</h2>
 
-          <div className={styles.wrapper}>
+          <div className={formStyles.wrapper}>
             <label htmlFor="username">ユーザーID</label><br />
             <input
               id="username"
-              className={styles.input}
+              className={formStyles.input}
               name="username"
               type="text"
               autoFocus
               placeholder="username"
-              onChange={(e) => setusername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               value={username}
             />
           </div>
 
-          <div className={styles.wrapper}>
+          <div className={formStyles.wrapper}>
             <label htmlFor="password">パスワード</label><br />
             <input
               id="password"
-              className={styles.input}
+              className={formStyles.input}
               name="password"
               type="password"
               placeholder="password"
@@ -71,20 +55,20 @@ const Auth = () => {
           </div>
 
           <button
-            className={styles.button}
+            className={formStyles.button}
             disabled={!username || !pw}
             type="submit"
           >
-            {isLogin ? 'ログイン' : '登録'}
+            ログイン
           </button>
         </form>
 
-        <FontAwesomeIcon
-          style={{ fontSize: "3rem", textAlign: "center" }}
-          icon={faArrowsRotate}
-          onClick={() => setIsLogin(!isLogin)}
-        />
-
+        <Link
+          to="signup"
+          className={styles.link}
+        >
+          ユーザー登録はこちらから
+        </Link>
       </div>
     </Layout>
   )

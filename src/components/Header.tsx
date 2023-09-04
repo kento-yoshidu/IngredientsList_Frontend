@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 
-import Logout from "./Logout"
+import Logout from "./LogOut"
 
 import styles from "../styles/header.module.css"
 
