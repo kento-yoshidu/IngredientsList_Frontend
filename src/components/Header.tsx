@@ -1,12 +1,11 @@
 import { useLocation } from "react-router-dom"
 
-import Logout from "./Logout"
+import LogoutButton from "./LogOutButton"
 
 import styles from "../styles/header.module.css"
 
 const Header = () => {
   const path = useLocation()
-
 
   return (
     <header className={styles.header}>
@@ -14,7 +13,7 @@ const Header = () => {
       <p className={styles.notice}>Version 0.1.0</p>
 
       {path.pathname !== "/" && (
-        <Logout />
+        <LogoutButton />
       )}
     </header>
   )

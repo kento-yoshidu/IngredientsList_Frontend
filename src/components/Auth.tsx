@@ -64,7 +64,7 @@ const Auth = () => {
         </form>
 
         <Link
-          to="signup"
+          to="/signup"
           className={styles.link}
         >
           ユーザー登録はこちらから

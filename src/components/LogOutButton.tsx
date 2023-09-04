@@ -6,7 +6,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 import styles from "../styles/logout.module.css"
 
-const LogOut = () => {
+const LogOutButton = () => {
   const queryClient = useQueryClient()
   const { logoutMutation } = useMutateAuth()
 
@@ -26,4 +26,4 @@ const LogOut = () => {
   )
 }
 
-export default LogOut
+export default LogOutButton
