@@ -9,6 +9,7 @@ import IngredientList from './components/IngredientList'
 import { CsrfToken } from './types'
 
 import "./styles/global.css"
+import SignUp from './components/SignUp'
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Auth />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/dishes" element={<DishList />} />
         <Route path="/dish/:id/ingredients" element={<IngredientList />} />
       </Routes>
