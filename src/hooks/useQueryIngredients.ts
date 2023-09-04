@@ -12,12 +12,14 @@ const useQueryIngredients = (dishId: number) => {
       `${process.env.REACT_APP_API_URL}/dish/${dishId}/ingredients`,
       { withCredentials: true }
     )
+
     return data
   }
 
   return useQuery<IngredientItem[], Error>({
-    queryKey: ['ingredients'],
+    queryKey: [`ingredients-${dishId}`],
     queryFn: getIngredients,
+    cacheTime: 100,
     onError: (err: any) => {
       if (err.response.data.message) {
         switchErrorHandling(err.response.data.message)
