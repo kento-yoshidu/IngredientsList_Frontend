@@ -20,6 +20,7 @@ const useError = () => {
       case 'invalid csrf token':
         getCsrfToken()
         alert('CSRF token is invalid, please try again')
+        navigate('/')
         break
       case 'invalid or expired jwt':
         alert('access token expired, please login')
