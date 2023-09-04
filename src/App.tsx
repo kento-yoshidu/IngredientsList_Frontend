@@ -5,6 +5,7 @@ import axios from 'axios'
 import Auth from './components/Auth'
 import DishList from './components/DishList'
 import IngredientList from './components/IngredientList'
+import Page404 from './Page404'
 
 import { CsrfToken } from './types'
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dishes" element={<DishList />} />
         <Route path="/dish/:id/ingredients" element={<IngredientList />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   )
