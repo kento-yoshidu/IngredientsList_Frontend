@@ -1,4 +1,13 @@
+.header {
+  text-align: center;
+}
+
 .headerTitle {
+  margin-bottom: 15px;
   font-size: clamp(1.8rem, 3vw, 2.2rem);
   font-weight: normal;
+}
+
+.notice {
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
 }
