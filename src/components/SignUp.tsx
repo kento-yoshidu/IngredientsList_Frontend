@@ -30,44 +30,48 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <h2 className={formStyles.formTitle}>ユーザー登録</h2>
-
-      <form onSubmit={submitAuthHandler}>
-        <div className={formStyles.wrapper}>
-          <label htmlFor="username">ユーザーID</label><br />
-          <input
-            id="username"
-            className={formStyles.input}
-            name="username"
-            type="text"
-            autoFocus
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </div>
-
-        <div className={formStyles.wrapper}>
-          <label htmlFor="password">パスワード</label><br />
-          <input
-            id="password"
-            className={formStyles.input}
-            name="password"
-            type="password"
-            placeholder="password"
-            onChange={(e) => setPw(e.target.value)}
-            value={pw}
-          />
-        </div>
-
-        <button
-          className={formStyles.button}
-          disabled={!username || !pw}
-          type="submit"
+      <div className={styles.wrapper}>
+        <form
+          className={formStyles.form}
+          onSubmit={submitAuthHandler}
         >
-          ユーザー登録
-        </button>
-      </form>
+          <h2 className={formStyles.formTitle}>ユーザー登録</h2>
+          <div className={formStyles.wrapper}>
+            <label htmlFor="username">ユーザーID</label><br />
+            <input
+              id="username"
+              className={formStyles.input}
+              name="username"
+              type="text"
+              autoFocus
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </div>
+
+          <div className={formStyles.wrapper}>
+            <label htmlFor="password">パスワード</label><br />
+            <input
+              id="password"
+              className={formStyles.input}
+              name="password"
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPw(e.target.value)}
+              value={pw}
+            />
+          </div>
+
+          <button
+            className={formStyles.button}
+            disabled={!username || !pw}
+            type="submit"
+          >
+            ユーザー登録
+          </button>
+        </form>
+      </div>
 
       <Link
         to="/"

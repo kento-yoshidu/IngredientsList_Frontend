@@ -7,3 +7,7 @@
   padding: 50px 0;
   gap: 40px;
 }
+
+.main {
+  min-width: 360px;
+}

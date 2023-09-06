@@ -33,59 +33,61 @@ const IngredientList = () => {
 
   return (
     <Layout>
-      {data?.length === 0 ? (
-        <p>食材が登録されていません</p>
-      ) : (
-        <>
-          {!isLoading && (
-            <>
-              {data![0].dishname && (
-                <p className={styles.pageTitle}>
-                  ✨{data![0].dishname}✨ の食材リスト
-                </p>
-              )}
-            </>
-          )}
+      <div className={styles.wrapper}>
+        {data?.length === 0 ? (
+          <p>食材が登録されていません</p>
+        ) : (
+          <>
+            {!isLoading && (
+              <>
+                {data![0].dishname && (
+                  <p className={styles.pageTitle}>
+                    ✨{data![0].dishname}✨ の食材リスト
+                  </p>
+                )}
+              </>
+            )}
 
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <ul className={listStyle.list}>
-              {data?.map((ing) => (
-                <IngreItem
-                  key={`key-${ing.id}`}
-                  id={ing.id}
-                  ingredientname={ing.ingredientname}
-                  shouldbuy={ing.shouldbuy}
-                />
-              ))}
-            </ul>
-          )}
-        </>
-      )}
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <ul className={listStyle.list}>
+                {data?.map((ing) => (
+                  <IngreItem
+                    key={`key-${ing.id}`}
+                    id={ing.id}
+                    ingredientname={ing.ingredientname}
+                    shouldbuy={ing.shouldbuy}
+                  />
+                ))}
+              </ul>
+            )}
+          </>
+        )}
+      </div>
 
-      <hr />
-
-      <form
-        className={formStyle.form}
-        onSubmit={submitDishHandler}
-      >
-        <h2 className={formStyle.formTitle}>食材を追加する</h2>
-
-        <input
-          name="ingredientname"
-          placeholder="dishName ?"
-          type="text"
-          onChange={(e) => updateIngre({ ...editedIngre, ingredientname: e.target.value })}
-          value={editedIngre.ingredientname || ''}
-        />
-
-        <button
-          disabled={!editedIngre.ingredientname}
+      <div className={styles.wrapper}>
+        <form
+          className={formStyle.form}
+          onSubmit={submitDishHandler}
         >
-          追加する
-        </button>
-      </form>
+          <h2 className={formStyle.formTitle}>食材を追加する</h2>
+
+          <input
+            name="ingredientname"
+            placeholder="dishName ?"
+            type="text"
+            onChange={(e) => updateIngre({ ...editedIngre, ingredientname: e.target.value })}
+            value={editedIngre.ingredientname || ''}
+          />
+
+          <button
+            disabled={!editedIngre.ingredientname}
+          >
+            追加する
+          </button>
+        </form>
+      </div>
     </Layout>
   )
 }

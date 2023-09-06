@@ -20,26 +20,30 @@ const DishItemMemo: FC<Omit<Dish, 'created_at' | 'updated_at'>> = ({
 
   return (
     <li className={listStyle.listItem}>
-      <Link to={`/dish/${id}/ingredients`}>
-        <span className="font-bold">{dishname}</span>
-      </Link>
+      <div className={listStyle.itemLeft}>
+        <Link to={`/dish/${id}/ingredients`}>
+          <span className="font-bold">{dishname}</span>
+        </Link>
+      </div>
 
-      <FontAwesomeIcon icon={faPencil}
-        onClick={() => {
-          updateDish({
-            id: id,
-            dishname: dishname,
-          })
-        }}
-      />
+      <div className={listStyle.itemRight}>
+        <FontAwesomeIcon icon={faPencil}
+          onClick={() => {
+            updateDish({
+              id: id,
+              dishname: dishname,
+            })
+          }}
+        />
 
-      <FontAwesomeIcon
-        role="button"
-        icon={faTrash}
-        onClick={() => {
-          deleteDishMutation.mutate(id)
-        }}
-      />
+        <FontAwesomeIcon
+          role="button"
+          icon={faTrash}
+          onClick={() => {
+            deleteDishMutation.mutate(id)
+          }}
+        />
+      </div>
     </li>
   )
 }
