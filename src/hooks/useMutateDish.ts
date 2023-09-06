@@ -16,9 +16,11 @@ const useMutateDish = () => {
     {
       onSuccess: (res) => {
         const previousDishs = queryClient.getQueryData<Dish[]>(['dishes'])
+
         if (previousDishs) {
           queryClient.setQueryData(['dishes'], [...previousDishs, res.data])
         }
+
         resetEditedDish()
       },
       onError: (err: any) => {
@@ -48,6 +50,7 @@ const useMutateDish = () => {
             )
           )
         }
+
         resetEditedDish()
       },
       onError: (err: any) => {
@@ -73,6 +76,7 @@ const useMutateDish = () => {
             previousDishs.filter((dish) => dish.id !== variables)
           )
         }
+
         resetEditedDish()
       },
       onError: (err: any) => {
