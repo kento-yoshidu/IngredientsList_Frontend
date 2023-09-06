@@ -23,8 +23,11 @@ const Auth = () => {
 
   return (
     <Layout>
-      <div>
-        <form onSubmit={submitAuthHandler}>
+      <div className={styles.wrapper}>
+        <form
+          className={formStyles.form}
+          onSubmit={submitAuthHandler}
+        >
           <h2 className={formStyles.formTitle}>ログイン</h2>
 
           <div className={formStyles.wrapper}>

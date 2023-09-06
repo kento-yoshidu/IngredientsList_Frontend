@@ -12,7 +12,7 @@ const Header = () => {
       <h1 className={styles.headerTitle}>My Go App</h1>
       <p className={styles.notice}>Version 0.1.0</p>
 
-      {path.pathname !== "/" && (
+      {path.pathname !== "/" && path.pathname !== "/signup" && (
         <LogoutButton />
       )}
     </header>

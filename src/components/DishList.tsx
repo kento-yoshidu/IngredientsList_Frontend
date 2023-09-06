@@ -31,7 +31,7 @@ const DishList = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 font-mono">
+      <div className={Style.wrapper}>
         <h2 className={Style.pageTitle}>料理リスト</h2>
 
         {isLoading ? (
@@ -49,9 +49,9 @@ const DishList = () => {
             )}
           </>
         )}
+      </div>
 
-        <hr />
-
+      <div className={Style.wrapper}>
         <form
           className={formStyle.form}
           onSubmit={submitDishHandler}
@@ -59,21 +59,18 @@ const DishList = () => {
           <h2 className={formStyle.formTitle}>料理を追加する</h2>
 
           <input
-            className="mb-3 mr-3 px-3 py-2 border border-gray-300"
             placeholder="dishName ?"
             type="text"
             onChange={(e) => updateDish({ ...editedDish, dishname: e.target.value })}
-            value={editedDish.dishname || ''}
+            value={editedDish.dishname || ""}
           />
 
           <button
-            className="disabled:opacity-40 mx-3 py-2 px-3 text-white bg-indigo-600 rounded"
             disabled={!editedDish.dishname}
           >
             {editedDish.id === 0 ? 'Create' : 'Update'}
           </button>
         </form>
-
       </div>
     </Layout>
   )
