@@ -33,13 +33,13 @@ const useError = () => {
         navigate('/')
         break
       case 'duplicated key not allowed':
-        alert('email already exist, please use another one')
+        alert("既に登録されているユーザー名です。他のユーザー名を検討下さい。")
         break
       case 'crypto/bcrypt: hashedPassword is not the hash of the given password':
-        alert('password is not correct')
+        alert("ユーザー名、もしくはパスワードが間違っています。")
         break
       case 'record not found':
-        alert('email is not correct')
+        alert("ユーザー名、もしくはパスワードが間違っています。")
         break
       default:
         alert(msg)

@@ -20,9 +20,11 @@ const useMutateIngredient = () => {
     {
       onSuccess: (res) => {
         const previousIngredients = queryClient.getQueryData<Ingredient[]>(["ingredients"])
+
         if (previousIngredients) {
           queryClient.setQueryData(["ingredients"], [...previousIngredients, res.data])
         }
+
         resetEditedIngredient()
       },
       onError: (err: any) => {
@@ -46,6 +48,7 @@ const useMutateIngredient = () => {
     {
       onSuccess: (res, variables) => {
         const previousIngredients = queryClient.getQueryData<Ingredient[]>(['ingredients'])
+
         if (previousIngredients) {
           queryClient.setQueryData<Ingredient[]>(
             ['ingredients'],
@@ -54,6 +57,7 @@ const useMutateIngredient = () => {
             )
           )
         }
+
         resetEditedIngredient()
       },
       onError: (err: any) => {
@@ -79,6 +83,7 @@ const useMutateIngredient = () => {
             previousIngredients.filter((ingredient) => ingredient.id !== variables)
           )
         }
+
         resetEditedIngredient()
       },
       onError: (err: any) => {
