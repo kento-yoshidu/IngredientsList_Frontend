@@ -15,9 +15,11 @@ type EditedIngre = {
 type State = {
   editedDish: EditedDish
   editedIngre: EditedIngre
+  dishName: string
 
   updateEditedDish: (payload: EditedDish) => void
   updateEditedIngre: (payload: EditedIngre) => void
+  setDishName: (payload: string) => void
 
   resetEditedDish: () => void
   resetEditedIngre: () => void
@@ -26,6 +28,7 @@ type State = {
 const useStore = create<State>((set) => ({
   editedDish: { id: 0, dishname: '' },
   editedIngre: { id: 0, ingredientname: '', shouldbuy: true },
+  dishName: "DishName",
 
   updateEditedDish: (payload) =>
     set({
@@ -34,6 +37,10 @@ const useStore = create<State>((set) => ({
   updateEditedIngre: (payload) =>
     set({
       editedIngre: payload,
+    }),
+  setDishName: (payload) =>
+    set({
+      dishName: payload
     }),
   resetEditedDish: () => set({ editedDish: { id: 0, dishname: '' } }),
   resetEditedIngre: () => set({ editedIngre: { id: 0, ingredientname: '', shouldbuy: true } }),

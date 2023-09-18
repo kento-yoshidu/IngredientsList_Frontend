@@ -77,8 +77,6 @@ const useMutateIngredient = () => {
       onSuccess: (_, variables) => {
         const previousIngredients = queryClient.getQueryData<Ingredient[]>([`ingredients-${dishId.id}`])
 
-        console.log("prev = ", previousIngredients)
-
         if (previousIngredients) {
           queryClient.setQueryData<Ingredient[]>(
             [`ingredients-${dishId.id}`],
@@ -89,7 +87,6 @@ const useMutateIngredient = () => {
         resetEditedIngredient()
       },
       onError: (err: any) => {
-        window.alert("error")
         if (err.response.data.message) {
           switchErrorHandling(err.response.data.message)
         } else {
