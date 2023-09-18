@@ -19,10 +19,10 @@ const useMutateIngredient = () => {
     ),
     {
       onSuccess: (res) => {
-        const previousIngredients = queryClient.getQueryData<Ingredient[]>(["ingredients"])
+        const previousIngredients = queryClient.getQueryData<Ingredient[]>([`ingredients-${dishId.id}`])
 
         if (previousIngredients) {
-          queryClient.setQueryData(["ingredients"], [...previousIngredients, res.data])
+          queryClient.setQueryData([`ingredients-${dishId.id}`], [...previousIngredients, res.data])
         }
 
         resetEditedIngredient()
@@ -47,11 +47,11 @@ const useMutateIngredient = () => {
       }),
     {
       onSuccess: (res, variables) => {
-        const previousIngredients = queryClient.getQueryData<Ingredient[]>(['ingredients'])
+        const previousIngredients = queryClient.getQueryData<Ingredient[]>([`ingredients-${dishId.id}`])
 
         if (previousIngredients) {
           queryClient.setQueryData<Ingredient[]>(
-            ['ingredients'],
+            [`ingredients-${dishId.id}`],
             previousIngredients.map((ingredient) =>
               ingredient.id === variables.id ? res.data : ingredient
             )
@@ -75,11 +75,13 @@ const useMutateIngredient = () => {
       axios.delete(`${process.env.REACT_APP_API_URL}/dish/${dishId.id}/ingredient/${id}`),
     {
       onSuccess: (_, variables) => {
-        const previousIngredients = queryClient.getQueryData<Ingredient[]>(['ingredients'])
+        const previousIngredients = queryClient.getQueryData<Ingredient[]>([`ingredients-${dishId.id}`])
+
+        console.log("prev = ", previousIngredients)
 
         if (previousIngredients) {
           queryClient.setQueryData<Ingredient[]>(
-            ['ingredients'],
+            [`ingredients-${dishId.id}`],
             previousIngredients.filter((ingredient) => ingredient.id !== variables)
           )
         }
@@ -87,6 +89,7 @@ const useMutateIngredient = () => {
         resetEditedIngredient()
       },
       onError: (err: any) => {
+        window.alert("error")
         if (err.response.data.message) {
           switchErrorHandling(err.response.data.message)
         } else {

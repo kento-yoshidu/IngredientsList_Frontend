@@ -2,10 +2,11 @@ import { FormEvent } from 'react'
 import { useParams } from "react-router-dom"
 import useStore from '../store'
 import useQueryIngredients from "../hooks/useQueryIngredients"
-import { IngreItem } from "./IngredientItem"
+
 import useMutateIngredient from '../hooks/useMutateIngre'
 
 import Layout from "./Layout"
+import { IngreItem } from "./IngredientItem"
 
 import styles from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"

@@ -19,7 +19,8 @@ const useQueryIngredients = (dishId: number) => {
   return useQuery<IngredientItem[], Error>({
     queryKey: [`ingredients-${dishId}`],
     queryFn: getIngredients,
-    cacheTime: 100,
+    // cacheTime: 100,
+    staleTime: Infinity,
     onError: (err: any) => {
       if (err.response.data.message) {
         switchErrorHandling(err.response.data.message)
