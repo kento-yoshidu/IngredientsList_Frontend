@@ -6,6 +6,7 @@ import useQueryIngredients from "../hooks/useQueryIngredients"
 import useMutateIngredient from '../hooks/useMutateIngre'
 
 import Layout from "./Layout"
+import S from './State'
 import { IngreItem } from "./IngredientItem"
 
 import styles from "../styles/style.module.css"
@@ -35,6 +36,10 @@ const IngredientList = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
+        {process.env.NODE_ENV === "development" && (
+          <S />
+        )}
+
         {data?.length === 0 ? (
           <p>食材が登録されていません</p>
         ) : (
