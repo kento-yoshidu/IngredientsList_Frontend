@@ -9,6 +9,7 @@ import { DishItem } from './DishItem'
 import Style from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"
 import formStyle from "../styles/form.module.css"
+import { Link } from 'react-router-dom'
 
 const DishList = () => {
   const { editedDish } = useStore()
@@ -50,6 +51,10 @@ const DishList = () => {
           </>
         )}
       </div>
+
+      <Link to="/shouldbuy">
+        ストックの食材一覧はこちら
+      </Link>
 
       <div className={Style.wrapper}>
         <form

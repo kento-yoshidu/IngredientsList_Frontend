@@ -3,22 +3,31 @@ import Layout from "./Layout"
 import useQueryShouldBuyIngre from "../hooks/useQueryShouldbuyIngre"
 
 import Style from "../styles/style.module.css"
+import listStyle from "../styles/list.module.css"
 
 const ShouldBuy = () => {
   const { data, isLoading } = useQueryShouldBuyIngre()
 
-  console.log(data)
-
   return (
     <Layout>
       <div className={Style.wrapper}>
-        <h2 className={Style.pageTitle}>必要な食材一覧</h2>
+        <h2 className={Style.pageTitle}>ストックがない食材一覧</h2>
 
-        {data && data.map((ingre) => {
-          return (
-            <p>{ingre.ingredientname}</p>
-          )
-        })}
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {data?.length === 0 ? (
+              <p>食材は全て揃っています⭕</p>
+            ): (
+              <ul className={listStyle.list}>
+                {data?.map((ingre) => (
+                  <li>{ingre.ingredientname} （{ingre.dishname}）</li>
+                ))}
+              </ul>
+            )}
+          </>
+          )}
       </div>
     </Layout>
   )
