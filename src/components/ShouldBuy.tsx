@@ -4,6 +4,7 @@ import useQueryShouldBuyIngre from "../hooks/useQueryShouldbuyIngre"
 
 import Style from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"
+import { IngreItem } from "./IngredientItem"
 
 const ShouldBuy = () => {
   const { data, isLoading } = useQueryShouldBuyIngre()
@@ -22,7 +23,11 @@ const ShouldBuy = () => {
             ): (
               <ul className={listStyle.list}>
                 {data?.map((ingre) => (
-                  <li>{ingre.ingredientname} （{ingre.dishname}）</li>
+                  <IngreItem
+                    id={ingre.id}
+                    ingredientname={ingre.ingredientname}
+                    shouldbuy={ingre.shouldbuy}
+                  />
                 ))}
               </ul>
             )}
