@@ -9,6 +9,7 @@ export type Ingredient = {
   id: number
   ingredientname: string
   shouldbuy: boolean
+  dishName?: string
 }
 
 export type IngredientItem = {

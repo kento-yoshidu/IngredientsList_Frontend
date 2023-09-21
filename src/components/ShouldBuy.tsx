@@ -22,17 +22,14 @@ const ShouldBuy = () => {
               <p>食材は全て揃っています⭕</p>
             ): (
               <ul className={listStyle.list}>
-                {data?.map((ingre) => {
-                  const ingredientname = `${ingre.ingredientname}（${ingre.dishname}）`
-
-                  return (
-                    <IngreItem
-                      id={ingre.id}
-                      ingredientname={ingredientname}
-                      shouldbuy={ingre.shouldbuy}
-                    />
-                  )
-                  })}
+                {data?.map((ingre) => (
+                  <IngreItem
+                    id={ingre.id}
+                    ingredientname={ingre.ingredientname}
+                    shouldbuy={ingre.shouldbuy}
+                    dishName={ingre.dishname}
+                  />
+                ))}
               </ul>
             )}
           </>

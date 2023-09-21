@@ -11,7 +11,8 @@ import listStyle from "../styles/list.module.css"
 const IngredientItemMemo = ({
   id,
   ingredientname,
-  shouldbuy
+  shouldbuy,
+  dishName
 }: Ingredient) => {
   const [isShouldBy, setIsShouldBy] = useState(shouldbuy)
 
@@ -39,7 +40,13 @@ const IngredientItemMemo = ({
         className={listStyle.itemLeft}
         onClick={clickHandle}
       >
-        <span className="font-bold">{ingredientname}</span>
+        <span className="font-bold">{ingredientname}
+          {dishName && (
+            <>
+            （{dishName}）
+            </>
+          )}
+        </span>
 
         {isShouldBy ? (
           <span className={listStyle.stockNone}>
