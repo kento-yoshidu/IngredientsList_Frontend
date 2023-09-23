@@ -12,7 +12,7 @@ const Header = () => {
       <h1 className={styles.headerTitle}>食材メモアプリ(仮)</h1>
       <p className={styles.notice}>Version 0.1.0</p>
 
-      {(pathname === "/" || "/signup") && (
+      {(pathname === "/" || pathname === "/signup" || pathname === "/shouldbuy") && (
         <div className={styles.introduction}>
           <p>スーパーに着いてから「何買うんだっけ？」って思い出せないことありませんか？冷蔵庫にストックされていない食材をメモできるアプリです。</p>
         </div>

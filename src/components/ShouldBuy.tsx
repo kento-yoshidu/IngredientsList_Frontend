@@ -5,6 +5,7 @@ import useQueryShouldBuyIngre from "../hooks/useQueryShouldbuyIngre"
 import Style from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"
 import { IngreItem } from "./IngredientItem"
+import Button from "./Button"
 
 const ShouldBuy = () => {
   const { data, isLoading } = useQueryShouldBuyIngre()
@@ -34,6 +35,11 @@ const ShouldBuy = () => {
             )}
           </>
           )}
+
+          <Button
+            link="/dishes"
+            text="料理一覧"
+          />
       </div>
     </Layout>
   )
