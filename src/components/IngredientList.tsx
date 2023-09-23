@@ -12,6 +12,7 @@ import { IngreItem } from "./IngredientItem"
 import styles from "../styles/style.module.css"
 import listStyle from "../styles/list.module.css"
 import formStyle from "../styles/form.module.css"
+import Button from './Button'
 
 const IngredientList = () => {
   const { editedIngre } = useStore()
@@ -71,6 +72,11 @@ const IngredientList = () => {
           </>
         )}
       </div>
+
+      <Button
+        link="/dishes"
+        text="料理一覧"
+      />
 
       <div className={styles.wrapper}>
         <form
