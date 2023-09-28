@@ -53,7 +53,7 @@ const DishList = () => {
       </div>
 
       <Link to="/shouldbuy">
-        ストックの食材一覧はこちら
+        ストックがない食材一覧はこちら
       </Link>
 
       <div className={Style.wrapper}>

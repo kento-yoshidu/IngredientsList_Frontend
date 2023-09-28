@@ -1,12 +1,11 @@
 import { FormEvent } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import useStore from '../store'
 import useQueryIngredients from "../hooks/useQueryIngredients"
 
 import useMutateIngredient from '../hooks/useMutateIngre'
 
 import Layout from "./Layout"
-import S from './State'
 import { IngreItem } from "./IngredientItem"
 
 import styles from "../styles/style.module.css"
@@ -37,10 +36,6 @@ const IngredientList = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        {process.env.NODE_ENV === "development" && (
-          <S />
-        )}
-
         {data?.length === 0 ? (
           <p>食材が登録されていません</p>
         ) : (
@@ -72,6 +67,10 @@ const IngredientList = () => {
           </>
         )}
       </div>
+
+      <Link to="/shouldbuy">
+        ストックがない食材一覧はこちら
+      </Link>
 
       <Button
         link="/dishes"
